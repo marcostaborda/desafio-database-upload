@@ -31,13 +31,11 @@ class CreateTransactionService {
     });
 
     if (!categoryObject) {
-      const categoryCreate = categoryRepository.create({
+      categoryObject = categoryRepository.create({
         title: category,
       });
 
-      await categoryRepository.save(categoryCreate);
-
-      categoryObject = categoryCreate;
+      await categoryRepository.save(categoryObject);
     }
 
     const transaction = transactionRepository.create({
